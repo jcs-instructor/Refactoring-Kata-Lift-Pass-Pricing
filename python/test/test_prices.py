@@ -38,3 +38,11 @@ def lift_pass_pricing_app():
 def test_something(lift_pass_pricing_app):
     response = requests.get(lift_pass_pricing_app + "/prices", params={'type': '1jour'})
     assert response.json() == {'cost': 35}
+
+def test_something_using_multiline_strings(lift_pass_pricing_app):
+    response = requests.get(lift_pass_pricing_app + "/prices", params={'type': '1jour'})
+    
+    expected = """{"cost":35}
+"""
+
+    assert response.text == expected
