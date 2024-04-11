@@ -32,7 +32,7 @@ def lift_pass_pricing_app():
     server_url = f"http://127.0.0.1:{TEST_PORT}"
     wait_for_server_to_start(server_url)
     yield server_url
-    p.terminate()
+    p.terminate() 
 
 
 def test_something(lift_pass_pricing_app):
@@ -46,3 +46,11 @@ def test_something_using_multiline_strings(lift_pass_pricing_app):
 """
 
     assert response.text == expected
+
+    # new feature: 1. request quantity
+    #              2. request multiple types of tickets
+
+def test_request_two_adult_passes(lift_pass_pricing_app):
+    response = requests.get(lift_pass_pricing_app + "/prices", params={'type': '1jour', 'quantity': 2})
+    assert response.json() == {'cost': 35 * 2}
+

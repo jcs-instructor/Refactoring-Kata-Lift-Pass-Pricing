@@ -4,7 +4,9 @@
 
 This application solves the problem of calculating the pricing for ski lift passes.
 There's some intricate logic linked to what kind of lift pass you want, your age
-and the specific date at which you'd like to ski. There's a new feature request,
+and the specific date at which you'd like to ski. 
+
+**There's a new feature request**,
 be able to get the price for several lift passes, not just one. Currently the pricing
 for a single lift pass is implemented, unfortunately the code as it is designed
 is ***not reusable***.
@@ -33,9 +35,7 @@ If you have Docker installed the easiest thing is to use this script, that will 
 
     ./runLocalDatabase.sh
 
-Inject the data with
-
-    mysql -u root -p mysql < ./database/initDatabase.sql
+(Note: This script injects the data as follows: mysql -u root -p mysql < ./database/initDatabase.sql)
 
 Then head on to the language of your choice and follow the Readme in there.
 Some of the languages have a failing test that you could finish writing.
