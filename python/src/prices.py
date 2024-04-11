@@ -17,10 +17,11 @@ connection = None
 
 @app.route("/prices", methods=['GET', 'PUT'])
 def prices():
+    single_price = prices_single()
     if 'quantity' in request.args: # and request.args.get('quantity', type=int) < 6:
         quantity = request.args.get('quantity', type=int)
-        return { "cost" : 35 * quantity } 
-    return prices_single()
+        return { "cost" : single_price['cost'] * quantity } 
+    return single_price
 
 
 def prices_single():

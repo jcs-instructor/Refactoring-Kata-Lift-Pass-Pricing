@@ -39,6 +39,10 @@ def test_something(lift_pass_pricing_app):
     response = requests.get(lift_pass_pricing_app + "/prices", params={'type': '1jour'})
     assert response.json() == {'cost': 35}
 
+def test_type_night(lift_pass_pricing_app):
+    response = requests.get(lift_pass_pricing_app + "/prices", params={'type': 'night'})
+    assert response.json() == {'cost': 0}
+
 def test_something_using_multiline_strings(lift_pass_pricing_app):
     response = requests.get(lift_pass_pricing_app + "/prices", params={'type': '1jour'})
     
@@ -54,6 +58,9 @@ def test_request_2_adult_passes(lift_pass_pricing_app):
     response = requests.get(lift_pass_pricing_app + "/prices", params={'type': '1jour', 'quantity': 2})
     assert response.json() == {'cost': 35 * 2}
 
+def test_request_2_adults_at_night(lift_pass_pricing_app):
+    response = requests.get(lift_pass_pricing_app + "/prices", params={'type': 'night', 'quantity': 2})
+    assert response.json() == {'cost': 0}
 
 def test_request_3_adult_passes(lift_pass_pricing_app):
     response = requests.get(lift_pass_pricing_app + "/prices", params={'type': '1jour', 'quantity': 3})
