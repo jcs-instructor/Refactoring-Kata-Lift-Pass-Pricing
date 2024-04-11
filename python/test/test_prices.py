@@ -50,7 +50,12 @@ def test_something_using_multiline_strings(lift_pass_pricing_app):
     # new feature: 1. request quantity
     #              2. request multiple types of tickets
 
-def test_request_two_adult_passes(lift_pass_pricing_app):
+def test_request_2_adult_passes(lift_pass_pricing_app):
     response = requests.get(lift_pass_pricing_app + "/prices", params={'type': '1jour', 'quantity': 2})
     assert response.json() == {'cost': 35 * 2}
+
+
+def test_request_3_adult_passes(lift_pass_pricing_app):
+    response = requests.get(lift_pass_pricing_app + "/prices", params={'type': '1jour', 'quantity': 3})
+    assert response.json() == {'cost': 35 * 3}
 
